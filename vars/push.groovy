@@ -5,5 +5,7 @@ def call(String credId, String imageName, String tagname) {
     sh """
     docker tag ${user}/${imageName} ${user}/${imageName}:${tagname}
     docker push ${user}/${imageName}:${tagname}
+    docker compose down
+    docker run --name notes -p 8000:8000 ${user}/${imageName}:${tagname}
     """
 }
