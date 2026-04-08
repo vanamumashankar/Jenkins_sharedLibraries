@@ -4,6 +4,8 @@ def call(String credId){
                     passwordVariable: "dockerHubPass",
                     usernameVariable: "dockerHubUser"
                 )]){
-        sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+        sh '''
+echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+'''
   }
 }
