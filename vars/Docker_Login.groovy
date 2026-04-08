@@ -1,11 +1,12 @@
 def call(String credId){
-  withCredentials([usernamePassword(
-                    credentialsId:"${credId}",
-                    passwordVariable: "dockerHubPass",
-                    usernameVariable: "dockerHubUser"
-                )]){
-        sh '''
-echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-'''
-  }
+withCredentials([usernamePassword(
+    credentialsId: credId,
+    usernameVariable: 'DOCKER_USER',
+    passwordVariable: 'DOCKER_PASS'
+)]) {
+
+    sh '''
+    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+    '''
+}
 }
