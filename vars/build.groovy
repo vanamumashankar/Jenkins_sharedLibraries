@@ -1,7 +1,7 @@
-def call(String credId, String imageName, String tagname){
+def call(String credId, String imageName){
 Docker_Login(credId)
                 sh '''
-                docker build ${env.dockerHubUser}/${imageName} .
+                docker build -t ${env.dockerHubUser}/${imageName} .
                 '''
                 }  
 }
