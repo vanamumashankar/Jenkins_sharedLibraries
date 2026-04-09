@@ -10,4 +10,5 @@ def call(String credId, String imageName, String tagname) {
     docker push ${user}/${imageName}:${tagname}
 
 docker compose down && docker compose up
+"""
 }
