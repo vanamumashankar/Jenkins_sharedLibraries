@@ -14,7 +14,7 @@ def call(String credId, String imageName, String tagname) {
     docker volume create mysql_data || true
 
     # Remove old containers if exist
-    docker rm -f mysql notes || true
+    docker rm -f db_cont notes || true
 
     # Run MySQL container
     docker run -d \
