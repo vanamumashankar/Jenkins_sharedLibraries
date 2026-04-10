@@ -18,7 +18,7 @@ def call(String credId, String imageName, String tagname) {
 
     # Run MySQL container
     docker run -d \
-      --name mysql \
+      --name db_cont \
       --network my \
       -e MYSQL_ROOT_PASSWORD=root \
       -e MYSQL_DATABASE=test_db \
@@ -36,7 +36,7 @@ def call(String credId, String imageName, String tagname) {
       -e DB_NAME=test_db \
       -e DB_USER=root \
       -e DB_PASSWORD=root \
-      -e DB_HOST=mysql \
+      -e DB_HOST=db_cont \
       ${user}/${imageName}:${tagname}
     """
 }
