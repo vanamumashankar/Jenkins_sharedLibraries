@@ -4,5 +4,6 @@ def call(String filename){
   echo "====================================================="
   trivy fs --format table -o ${filename}-report.html .
   echo "====================================================="
-  echo "trvivy scnanned docker image and report has been generated" 
+  echo "trvivy scnanned docker image and report has been generated as ${filename}-report.html" 
+  """
 }
