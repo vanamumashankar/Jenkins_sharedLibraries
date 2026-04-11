@@ -1,10 +1,12 @@
 def call(String filename, String toolname){
-  sh """
-  echo "dc check ha been started"
-  echo "==============================="
-  dependencyCheck additionalArguments: '--scan ./', odcInstallation: '${toolname}'
-dependencyCheckPublisher pattern: '**/${filename}-report.xml'
-echo "======================================="
-echo "dc checked"
-"""
+
+    echo "Dependency Check started"
+    echo "==============================="
+
+    dependencyCheck additionalArguments: "--scan ./ --format XML --out .", odcInstallation: toolname
+
+    dependencyCheckPublisher pattern: "**/dependency-check-report.xml"
+
+    echo "======================================="
+    echo "Dependency Check completed"
 }
